@@ -6,6 +6,13 @@ APScheduler, see the :doc:`migration section <migration>`.
 
 **UNRELEASED**
 
+- Fixed an issue where ``CronTrigger`` does not convert ``start_time`` to ``self.timezone``
+  (`#1061 <https://github.com/agronholm/apscheduler/issues/1061>`_; PR by @jonasitzmann)
+- Fixed an issue where ``CronTrigger.next()`` returned a non-existing date on a DST change
+  (`#1059 <https://github.com/agronholm/apscheduler/issues/1059>`_; PR by @jonasitzmann)
+
+**4.0.0a6**
+
 - **BREAKING** Refactored ``AsyncpgEventBroker`` to directly accept a connection string,
   thus eliminating the need for the ``AsyncpgEventBroker.from_dsn()`` class method
 - **BREAKING** Added the ``extend_acquired_schedule_leases()`` data store method to
@@ -75,6 +82,7 @@ APScheduler, see the :doc:`migration section <migration>`.
 - Fixed the job lease extension task exiting prematurely while the scheduler is starting
   (PR by @JacobHayes)
 - Migrated test and documentation dependencies from extras to dependency groups
+- Fixed ``add_job()`` overwriting task configuration (PR by @mattewid)
 
 **4.0.0a5**
 
